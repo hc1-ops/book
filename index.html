@@ -122,6 +122,40 @@
     }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+    /* ── 목차: 카드 창 왼쪽 ── */
+    .toc {
+      position: absolute; top: 0; right: calc(100% + 96px); width: 210px;
+      padding: 18px 14px; border-radius: 20px; background: #fff;
+      box-shadow: 0 10px 30px rgba(0, 60, 55, .08); border: 1px solid #e6e9e1;
+    }
+    .toc h2 { padding: 0 8px 10px; font-size: 12px; font-weight: 800; letter-spacing: .14em; color: var(--green); }
+    .toc ol { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc button {
+      width: 100%; display: flex; align-items: center; gap: 10px;
+      padding: 9px 10px; border: 0; border-radius: 10px; background: none; cursor: pointer;
+      font: 700 15px/1.2 'Pretendard', sans-serif; color: var(--ink-soft); text-align: left;
+      transition: background .15s, color .15s;
+    }
+    .toc button .n { flex: none; width: 24px; font-size: 12px; font-weight: 800; color: #9aa59f; }
+    .toc button:hover { background: #f1f4ef; color: var(--ink); }
+    .toc button.on { background: var(--green); color: #fff; }
+    .toc button.on .n { color: var(--lime); }
+
+    /* 화면이 넓지 않으면 목차를 카드 위 가로 줄로 */
+    @media (max-width: 1240px) {
+      :root { --w: min(740px, calc(100vw - 170px), calc((100vh - 230px) * 0.8)); }
+      .toc {
+        position: static; width: auto; margin-bottom: 14px; padding: 0;
+        background: none; box-shadow: none; border: 0;
+      }
+      .toc h2 { display: none; }
+      .toc ol { flex-direction: row; gap: 6px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+      .toc ol::-webkit-scrollbar { display: none; }
+      .toc button { width: auto; white-space: nowrap; padding: 8px 12px; border-radius: 999px; background: #fff; border: 1px solid #e1e5dc; font-size: 13px; }
+      .toc button .n { width: auto; }
+      .toc button.on { border-color: var(--green); }
+    }
+
     /* 좁은 화면: 화살표를 카드 위에 겹쳐 작게 */
     @media (max-width: 800px) {
       :root { --w: calc(100vw - 24px); }
@@ -150,6 +184,7 @@
 
   <section class="wrap" style="padding-top: 22px;">
     <div class="viewer">
+      <nav class="toc" aria-label="목차"><h2>CONTENTS</h2><ol id="toc"></ol></nav>
       <button class="nav-btn prev" id="prev" aria-label="이전 카드">‹</button>
       <div class="frame" id="frame"></div>
       <button class="nav-btn next" id="next" aria-label="다음 카드">›</button>
@@ -210,6 +245,19 @@
       print.appendChild(p);
     }
 
+    // 목차 (카드 태그와 같은 이름)
+    const TITLES = ['학과 소개', '문헌정보학과란?', '무엇을 배우나요?', '교수진', '전공강의실',
+      '사회과학대 공간', '창파도서관', '학과 행사', '학과 동아리', '진로', '함께해요'];
+    const toc = document.getElementById('toc');
+    TITLES.forEach((t, i) => {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.innerHTML = '<span class="n">' + pad(i + 1) + '</span>' + t;
+      b.onclick = () => go(i + 1);
+      li.appendChild(b);
+      toc.appendChild(li);
+    });
+
     let cur = Math.min(Math.max(parseInt(location.hash.slice(1), 10) || 1, 1), TOTAL);
 
     function layout() {
@@ -224,6 +272,14 @@
       document.getElementById('next').disabled = cur === TOTAL;
       document.getElementById('bar').style.width = (cur / TOTAL * 100) + '%';
       document.getElementById('now').textContent = pad(cur);
+      [...document.querySelectorAll('#toc button')].forEach((b, i) => {
+        const on = i + 1 === cur;
+        b.classList.toggle('on', on);
+        if (on) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
+        if (on && getComputedStyle(b.parentNode.parentNode).flexDirection === 'row') {
+          b.parentNode.parentNode.scrollTo({ left: b.parentNode.offsetLeft - 40, behavior: 'smooth' });
+        }
+      });
       history.replaceState(null, '', '#' + cur);
     }
     function go(n) {
