@@ -4,11 +4,105 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>대구대학교 문헌정보학과 카드뉴스</title>
-  <!-- 홈페이지 주소로 들어오면 1장으로 바로 이동 -->
-  <meta http-equiv="refresh" content="0; url=card01.html">
-  <link rel="canonical" href="card01.html">
+  <style>
+    /* 한 페이지 뷰어: 11장을 처음에 모두 불러 두고, 넘길 때는 슬라이드만 함 */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #2b2f2e; }
+    .viewer { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .viewer iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+      background: #2b2f2e;
+      transition: transform .5s cubic-bezier(.22, .8, .3, 1), opacity .5s ease;
+    }
+    .nav-btn {
+      position: fixed; top: 50%; z-index: 10; transform: translateY(-50%);
+      width: 64px; height: 64px; border-radius: 50%; border: none;
+      background: rgba(255, 255, 255, .92); color: #007870;
+      font: 900 30px/1 'Pretendard', 'Malgun Gothic', sans-serif; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+      transition: transform .15s, background .15s, opacity .2s;
+    }
+    .nav-btn:hover { transform: translateY(-50%) scale(1.08); background: #D8E040; }
+    .nav-btn.prev { left: 20px; }
+    .nav-btn.next { right: 20px; }
+    .nav-btn[hidden] { display: block; opacity: 0; pointer-events: none; }
+    .dots {
+      position: fixed; left: 50%; bottom: 14px; z-index: 10; transform: translateX(-50%);
+      display: flex; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(0, 0, 0, .35);
+    }
+    .dots button {
+      width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+      background: rgba(255, 255, 255, .35); transition: background .2s, width .2s;
+    }
+    .dots button.on { width: 24px; border-radius: 6px; background: #D8E040; }
+    @media (max-width: 700px) {
+      .nav-btn { width: 46px; height: 46px; font-size: 22px; }
+      .nav-btn.prev { left: 8px; } .nav-btn.next { right: 8px; }
+    }
+  </style>
 </head>
-<body style="background:#2b2f2e">
-  <script>location.replace('card01.html');</script>
+<body>
+  <div class="viewer" id="viewer"></div>
+  <button class="nav-btn prev" id="prev" aria-label="이전 카드">←</button>
+  <button class="nav-btn next" id="next" aria-label="다음 카드">→</button>
+  <div class="dots" id="dots"></div>
+
+  <script>
+    const TOTAL = 11;
+    const viewer = document.getElementById('viewer');
+    const dots = document.getElementById('dots');
+    const frames = [];
+
+    // 11장 모두 미리 불러오기 (1장 먼저, 나머지는 이어서)
+    for (let i = 1; i <= TOTAL; i++) {
+      const f = document.createElement('iframe');
+      f.title = i + '장';
+      f.src = 'card' + String(i).padStart(2, '0') + '.html';
+      viewer.appendChild(f);
+      frames.push(f);
+      const d = document.createElement('button');
+      d.setAttribute('aria-label', i + '장으로');
+      d.onclick = () => go(i);
+      dots.appendChild(d);
+    }
+
+    let cur = Math.min(Math.max(parseInt(location.hash.slice(1), 10) || 1, 1), TOTAL);
+
+    function layout() {
+      frames.forEach((f, i) => {
+        const off = i + 1 - cur;
+        f.style.transform = 'translateX(' + (off * 100) + '%)';
+        f.style.opacity = off === 0 ? 1 : 0;
+        f.style.pointerEvents = off === 0 ? 'auto' : 'none';
+        f.tabIndex = off === 0 ? 0 : -1;
+      });
+      [...dots.children].forEach((d, i) => d.classList.toggle('on', i + 1 === cur));
+      document.getElementById('prev').hidden = cur === 1;
+      document.getElementById('next').hidden = cur === TOTAL;
+      history.replaceState(null, '', '#' + cur);
+    }
+
+    function go(n) {
+      if (n < 1 || n > TOTAL || n === cur) return;
+      cur = n;
+      layout();
+    }
+
+    document.getElementById('prev').onclick = () => go(cur - 1);
+    document.getElementById('next').onclick = () => go(cur + 1);
+    addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(cur + 1);
+      if (e.key === 'ArrowLeft') go(cur - 1);
+    });
+    // 카드 안에서 누른 링크·키보드·스와이프 신호 받기
+    addEventListener('message', e => {
+      if (e.data && e.data.type === 'card-go') go(e.data.n);
+    });
+
+    // 처음 화면은 애니메이션 없이 바로
+    frames.forEach(f => f.style.transition = 'none');
+    layout();
+    requestAnimationFrame(() => requestAnimationFrame(() => frames.forEach(f => f.style.transition = '')));
+  </script>
 </body>
 </html>

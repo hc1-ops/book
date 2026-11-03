@@ -13,6 +13,29 @@
   const file = n => 'card' + String(n).padStart(2, '0') + '.html';
   const card = document.querySelector('.card');
 
+  // 한 페이지 뷰어(index.html) 안에 들어가 있을 때:
+  // 카드 자체 버튼은 숨기고, 클릭·키보드·스와이프를 뷰어에 전달만 함
+  if (window.self !== window.top) {
+    const tell = n => parent.postMessage({ type: 'card-go', n: n }, '*');
+    addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') tell(cur + 1);
+      if (e.key === 'ArrowLeft') tell(cur - 1);
+    });
+    document.querySelectorAll('a[href^="card"]').forEach(a => {
+      const t = a.getAttribute('href').match(/card(\d+)\.html/);
+      if (t) a.addEventListener('click', e => { e.preventDefault(); tell(parseInt(t[1], 10)); });
+    });
+    let sx = null, sy = null;
+    addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    addEventListener('touchend', e => {
+      if (sx === null) return;
+      const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) tell(dx < 0 ? cur + 1 : cur - 1);
+      sx = null;
+    }, { passive: true });
+    return;
+  }
+
   const style = document.createElement('style');
   style.textContent = `
     .card { transition: opacity ${DUR}ms ease, translate ${DUR}ms cubic-bezier(.22,.8,.3,1); }
