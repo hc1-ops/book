@@ -4,66 +4,111 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>대구대학교 문헌정보학과 카드뉴스</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
   <style>
-    /* 한 페이지 뷰어: 11장을 처음에 모두 불러 두고, 넘길 때는 슬라이드만 함 */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #2b2f2e; }
-    .viewer { position: relative; width: 100%; height: 100%; overflow: hidden; }
-    .viewer iframe {
-      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
-      background: #2b2f2e;
-      transition: transform .5s cubic-bezier(.22, .8, .3, 1), opacity .5s ease;
+    /* 화면 속 화면(PiP) 뷰어: 11장을 미리 불러 두고, 가운데 카드 창 안에서 슬라이드 */
+    :root {
+      --green: #007870; --green-dark: #00574f; --lime: #D8E040;
+      --bg: #f3f1e8; --ink: #1d2b29; --track: #d9ddd3;
+      --header: 80px;
+      --frame-w: min(calc((100vh - var(--header) - 150px) * 0.8), 92vw, 1080px);
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body {
+      background: var(--bg); color: var(--ink);
+      font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+      display: flex; flex-direction: column;
+    }
+
+    /* 위쪽 머리말 띠 */
+    header {
+      flex: none; height: var(--header);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 0 28px; background: var(--green); color: #fff;
+    }
+    header .en { font-size: 15px; font-weight: 800; letter-spacing: .14em; color: var(--lime); }
+    header .ko { margin-top: 2px; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; }
+
+    /* 가운데 무대 */
+    main {
+      flex: 1; min-height: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 18px; padding: 16px 0 18px;
+    }
+    .stage-wrap { position: relative; }
+    .frame {
+      position: relative; width: var(--frame-w); aspect-ratio: 1080 / 1350;
+      border-radius: 26px; overflow: hidden;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(0, 60, 55, .18), 0 4px 14px rgba(0, 0, 0, .08);
+    }
+    .frame iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+      transition: transform .5s cubic-bezier(.22, .8, .3, 1);
+    }
+
+    /* 카드 바깥 양옆 화살표 */
     .nav-btn {
-      position: fixed; top: 50%; z-index: 10; transform: translateY(-50%);
-      width: 64px; height: 64px; border-radius: 50%; border: none;
-      background: rgba(255, 255, 255, .92); color: #007870;
-      font: 900 30px/1 'Pretendard', 'Malgun Gothic', sans-serif; cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .25);
+      position: absolute; top: 50%; z-index: 5; transform: translateY(-50%);
+      width: 60px; height: 60px; border-radius: 50%; border: none;
+      background: #fff; color: var(--green);
+      font: 900 28px/1 'Pretendard', sans-serif; cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .12);
       transition: transform .15s, background .15s, opacity .2s;
     }
-    .nav-btn:hover { transform: translateY(-50%) scale(1.08); background: #D8E040; }
-    .nav-btn.prev { left: 20px; }
-    .nav-btn.next { right: 20px; }
-    .nav-btn[hidden] { display: block; opacity: 0; pointer-events: none; }
-    .dots {
-      position: fixed; left: 50%; bottom: 14px; z-index: 10; transform: translateX(-50%);
-      display: flex; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(0, 0, 0, .35);
-    }
-    .dots button {
-      width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
-      background: rgba(255, 255, 255, .35); transition: background .2s, width .2s;
-    }
-    .dots button.on { width: 24px; border-radius: 6px; background: #D8E040; }
-    @media (max-width: 700px) {
-      .nav-btn { width: 46px; height: 46px; font-size: 22px; }
-      .nav-btn.prev { left: 8px; } .nav-btn.next { right: 8px; }
+    .nav-btn:hover { transform: translateY(-50%) scale(1.07); background: var(--lime); }
+    .nav-btn.prev { right: calc(100% + 36px); }
+    .nav-btn.next { left: calc(100% + 36px); }
+    .nav-btn:disabled { opacity: 0; pointer-events: none; }
+
+    /* 아래 진행 막대 + 쪽수 */
+    .progress { width: var(--frame-w); height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; }
+    .progress span { display: block; height: 100%; background: var(--green); border-radius: 3px; transition: width .5s cubic-bezier(.22, .8, .3, 1); }
+    .counter { font-size: 22px; font-weight: 500; color: #7a857f; letter-spacing: .02em; }
+    .counter b { font-weight: 900; color: var(--green-dark); }
+
+    /* 좁은 화면(휴대폰): 화살표를 카드 위에 겹쳐 작게 */
+    @media (max-width: 760px) {
+      :root { --header: 64px; }
+      header { padding: 0 18px; }
+      header .en { font-size: 12px; } header .ko { font-size: 17px; }
+      .nav-btn { width: 44px; height: 44px; font-size: 20px; background: rgba(255, 255, 255, .92); }
+      .nav-btn.prev { right: auto; left: 8px; }
+      .nav-btn.next { left: auto; right: 8px; }
     }
   </style>
 </head>
 <body>
-  <div class="viewer" id="viewer"></div>
-  <button class="nav-btn prev" id="prev" aria-label="이전 카드">←</button>
-  <button class="nav-btn next" id="next" aria-label="다음 카드">→</button>
-  <div class="dots" id="dots"></div>
+  <header>
+    <span class="en">DAEGU UNIVERSITY</span>
+    <span class="ko">대구대학교 문헌정보학과</span>
+  </header>
+
+  <main>
+    <div class="stage-wrap">
+      <button class="nav-btn prev" id="prev" aria-label="이전 카드">‹</button>
+      <div class="frame" id="frame"></div>
+      <button class="nav-btn next" id="next" aria-label="다음 카드">›</button>
+    </div>
+    <div class="progress"><span id="bar"></span></div>
+    <p class="counter"><b id="now">01</b> / <span id="total"></span></p>
+  </main>
 
   <script>
     const TOTAL = 11;
-    const viewer = document.getElementById('viewer');
-    const dots = document.getElementById('dots');
+    const frame = document.getElementById('frame');
     const frames = [];
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('total').textContent = pad(TOTAL);
 
-    // 11장 모두 미리 불러오기 (1장 먼저, 나머지는 이어서)
+    // 11장 모두 미리 불러오기
     for (let i = 1; i <= TOTAL; i++) {
       const f = document.createElement('iframe');
       f.title = i + '장';
-      f.src = 'card' + String(i).padStart(2, '0') + '.html';
-      viewer.appendChild(f);
+      f.src = 'card' + pad(i) + '.html';
+      frame.appendChild(f);
       frames.push(f);
-      const d = document.createElement('button');
-      d.setAttribute('aria-label', i + '장으로');
-      d.onclick = () => go(i);
-      dots.appendChild(d);
     }
 
     let cur = Math.min(Math.max(parseInt(location.hash.slice(1), 10) || 1, 1), TOTAL);
@@ -72,13 +117,14 @@
       frames.forEach((f, i) => {
         const off = i + 1 - cur;
         f.style.transform = 'translateX(' + (off * 100) + '%)';
-        f.style.opacity = off === 0 ? 1 : 0;
+        f.style.visibility = Math.abs(off) <= 1 ? 'visible' : 'hidden';
         f.style.pointerEvents = off === 0 ? 'auto' : 'none';
         f.tabIndex = off === 0 ? 0 : -1;
       });
-      [...dots.children].forEach((d, i) => d.classList.toggle('on', i + 1 === cur));
-      document.getElementById('prev').hidden = cur === 1;
-      document.getElementById('next').hidden = cur === TOTAL;
+      document.getElementById('prev').disabled = cur === 1;
+      document.getElementById('next').disabled = cur === TOTAL;
+      document.getElementById('bar').style.width = (cur / TOTAL * 100) + '%';
+      document.getElementById('now').textContent = pad(cur);
       history.replaceState(null, '', '#' + cur);
     }
 
