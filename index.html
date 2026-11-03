@@ -10,7 +10,7 @@
     :root {
       --green: #007870; --green-dark: #00574f; --lime: #D8E040;
       --bg: #f6f4ec; --ink: #1d2b29; --ink-soft: #5d6a66; --track: #d6dbd2;
-      --w: min(660px, calc(100vw - 40px));
+      --w: min(820px, calc(100vw - 170px));
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -63,7 +63,7 @@
     .viewer { position: relative; }
     .frame {
       position: relative; width: var(--w); aspect-ratio: 1080 / 1350;
-      border-radius: 22px; overflow: hidden; background: #fff;
+      border-radius: 28px; overflow: hidden; background: #fff;
       box-shadow: 0 22px 56px rgba(0, 60, 55, .16), 0 4px 12px rgba(0, 0, 0, .06);
     }
     .frame iframe {
@@ -124,6 +124,7 @@
 
     /* 좁은 화면: 화살표를 카드 위에 겹쳐 작게 */
     @media (max-width: 800px) {
+      :root { --w: calc(100vw - 24px); }
       .nav-btn { width: 40px; height: 40px; font-size: 18px; background: rgba(255, 255, 255, .92); }
       .nav-btn.prev { right: auto; left: 8px; }
       .nav-btn.next { left: auto; right: 8px; }
