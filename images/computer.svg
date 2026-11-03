@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 220" width="240" height="220">
+  <!-- 데스크톱 컴퓨터 (두두 일러스트와 같은 굵은 외곽선 스타일) -->
+  <g stroke="#1d1d1d" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- 받침 -->
+    <path d="M100 160 L92 196 L148 196 L140 160 Z" fill="#cfd3cf"/>
+    <rect x="70" y="194" width="100" height="14" rx="6" fill="#e8ebe6"/>
+    <!-- 모니터 -->
+    <rect x="8" y="8" width="224" height="158" rx="14" fill="#f4f5f1"/>
+    <rect x="22" y="22" width="196" height="122" rx="6" fill="#0a8a80"/>
+  </g>
+  <!-- 화면 속 데이터 -->
+  <g fill="#ffffff" opacity=".9">
+    <rect x="36" y="36" width="70" height="10" rx="5"/>
+    <rect x="36" y="54" width="110" height="8" rx="4" opacity=".7"/>
+    <rect x="36" y="68" width="90" height="8" rx="4" opacity=".7"/>
+  </g>
+  <!-- 막대 그래프 -->
+  <g stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round">
+    <rect x="150" y="92" width="16" height="40" fill="#D8E040"/>
+    <rect x="172" y="72" width="16" height="60" fill="#ffffff"/>
+    <rect x="194" y="52" width="16" height="80" fill="#D8E040"/>
+  </g>
+  <!-- 검색창 -->
+  <g stroke="#1d1d1d" stroke-width="3">
+    <rect x="36" y="96" width="98" height="24" rx="12" fill="#ffffff"/>
+    <circle cx="118" cy="108" r="6" fill="none"/>
+    <line x1="122" y1="112" x2="127" y2="117"/>
+  </g>
+  <!-- 전원 표시등 -->
+  <circle cx="120" cy="155" r="4" fill="#D8E040" stroke="#1d1d1d" stroke-width="2"/>
+</svg>

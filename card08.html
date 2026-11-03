@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>07 학과행사</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+    .emoji { font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif; font-weight: 400; }
+
+    /* 네모칸 3개 (모두 같은 크기, 흰색) */
+    .events {
+      position: relative; z-index: 3; margin-top: 44px;
+      display: grid; grid-auto-rows: 1fr; gap: 16px;
+    }
+    .ev {
+      padding: 26px 34px 28px; border-radius: 30px;
+      background: #fff; border: 3px solid var(--line);
+    }
+    .ev h3 { font-size: 38px; font-weight: 900; letter-spacing: -0.04em; color: var(--green); }
+    .ev p { margin-top: 10px; font-size: 26px; font-weight: 600; line-height: 1.5; letter-spacing: -0.03em; color: var(--ink-soft); }
+    .ev p b { font-weight: 800; color: var(--ink); }
+
+    /* 학기별 칩 */
+    .terms { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+    .term { display: flex; align-items: flex-start; gap: 16px; }
+    .term .sem {
+      flex: none; width: 104px; padding: 8px 0; border-radius: 999px; text-align: center;
+      background: var(--lime); color: var(--green-dark);
+      font-size: 24px; font-weight: 900;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .chips span {
+      padding: 8px 18px; border-radius: 999px;
+      background: var(--paper); border: 2px solid var(--line); color: var(--ink);
+      font-size: 23px; font-weight: 700; letter-spacing: -0.02em;
+    }
+
+    .council {
+      position: absolute; left: 80px; bottom: 48px; z-index: 3;
+      font-size: 25px; font-weight: 700; color: var(--ink-soft); letter-spacing: -0.02em;
+    }
+    .council b { color: var(--green); font-weight: 900; }
+
+    /* 두두 */
+    .stage { position: absolute; right: 70px; top: 150px; width: 240px; z-index: 2; }
+    .stage img { width: 100%; display: block; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 280px; }
+    .spark.s2 { right: 200px; top: 350px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>08</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">학과 행사</span>
+      <h2 class="title">공부만<br><span class="hl">하냐고요?</span> <span class="emoji">📚</span></h2>
+    </div>
+
+    <div class="events">
+      <div class="ev">
+        <h3>문정인의 밤</h3>
+        <p>한 해의 추억을 나누고 서로의 성장을 응원하는 날!<br><b>취업특강 · 축하공연 · 공모전 시상식 · OX 퀴즈 · 경품추첨</b>까지<br>학우와 교수님이 함께 어우러져 모두가 하나 되는 시간이에요.</p>
+      </div>
+      <div class="ev">
+        <h3>도서관 탐방</h3>
+        <p>교과서 속 도서관을 직접 찾아가 사서의 일을 눈으로 확인해요.</p>
+      </div>
+      <div class="ev">
+        <h3>학기별 행사</h3>
+        <div class="terms">
+          <div class="term">
+            <span class="sem">1학기</span>
+            <div class="chips"><span>MT</span><span>봄축제</span><span>도서관 견학</span><span>전문가 특강</span><span>공모전</span></div>
+          </div>
+          <div class="term">
+            <span class="sem">2학기</span>
+            <div class="chips"><span>가을축제</span><span>도서관 견학</span><span>모의면접</span><span>대경문연</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="council"><b>제46대 새봄 학생회</b> · '다름을 품고, 함께 피어나는'</p>
+
+    <div class="stage">
+      <img src="images/dodu/dodu-17.png" alt="박수 치는 두두">
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

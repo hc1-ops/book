@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>09 진로</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 82px; font-weight: 900; line-height: 1.18; letter-spacing: -0.045em;
+    }
+
+    /* 4개 분야 2×2 */
+    .fields {
+      position: relative; z-index: 3; margin-top: 44px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .field {
+      padding: 26px 28px 28px; border-radius: 26px;
+      background: #fff; border: 3px solid var(--line);
+    }
+    .field h3 {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 33px; font-weight: 900; letter-spacing: -0.04em; color: var(--green);
+    }
+    .field h3::before {
+      content: ''; flex: none; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--lime); box-shadow: 0 0 0 5px rgba(216, 224, 64, .3);
+    }
+    .field p { margin-top: 10px; font-size: 24px; font-weight: 600; line-height: 1.45; color: var(--ink-soft); letter-spacing: -0.02em; }
+
+    /* 자격증 박스 */
+    .cert {
+      position: relative; z-index: 3; margin-top: 22px;
+      padding: 30px 34px 32px; border-radius: 30px;
+      background: #fff; color: var(--ink); border: 3px solid var(--line);
+    }
+    .cert h3 { font-size: 30px; font-weight: 900; color: var(--green); letter-spacing: -0.03em; }
+    .cert ul { margin-top: 14px; list-style: none; display: flex; flex-direction: column; gap: 10px; width: 640px; }
+    .cert li { font-size: 25px; font-weight: 600; line-height: 1.4; letter-spacing: -0.03em; }
+    .cert li b { font-weight: 900; color: var(--green); }
+    .cert li small { font-size: 21px; color: var(--ink-soft); }
+
+    /* 두두: 꽃다발 + 책 + 노트북 */
+    .stage { position: absolute; right: 24px; bottom: -14px; width: 270px; z-index: 4; }
+    .stage img { position: relative; z-index: 2; width: 100%; display: block; }
+    .stage .prop {
+      position: absolute; line-height: 1;
+      font-family: 'Segoe UI Emoji', 'Apple Color Emoji', sans-serif;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .25));
+    }
+    .stage .book { left: -52px; bottom: 112px; font-size: 88px; transform: rotate(-14deg); z-index: 1; }
+    .stage .laptop { right: -20px; bottom: 40px; font-size: 96px; transform: rotate(8deg); z-index: 3; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 250px; }
+    .spark.s2 { right: 200px; top: 320px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>10</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">진로</span>
+      <h2 class="title">졸업하면<br>사서만 될까요? <span class="hl">아니요!</span></h2>
+    </div>
+
+    <div class="fields">
+      <div class="field">
+        <h3>도서관·공공기관</h3>
+        <p>사서직 공무원, 사서교사,<br>공공·대학·학교도서관</p>
+      </div>
+      <div class="field">
+        <h3>정보·데이터·IT</h3>
+        <p>데이터 관리자, 정보시스템,<br>연구기관</p>
+      </div>
+      <div class="field">
+        <h3>언론·방송</h3>
+        <p>언론사·방송사 자료실,<br>뉴스 DB·아카이브</p>
+      </div>
+      <div class="field">
+        <h3>출판·콘텐츠·연구</h3>
+        <p>출판·콘텐츠 기획,<br>대학원 진학</p>
+      </div>
+    </div>
+
+    <div class="cert">
+      <h3>이런 자격증을 얻을 수 있어요</h3>
+      <ul>
+        <li>국가자격증 <b>정사서 2급</b> · 졸업하면 받아요</li>
+        <li><b>사서교사</b> · 교직 이수 시 <small>(입학 정원의 10% 선발)</small></li>
+        <li><b>1급 정사서</b> · 대학원 진학과 경력으로 도전</li>
+        <li><b>함께 도전</b> · SQLD · ADP · 정보처리기사</li>
+      </ul>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+
+    <div class="stage">
+      <img src="images/dodu/dodu-12.png" alt="학사모를 쓰고 꽃다발, 책, 노트북을 든 두두">
+      <span class="prop book">📚</span>
+      <span class="prop laptop">💻</span>
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

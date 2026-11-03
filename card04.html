@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>04 교수진</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 88px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+
+    /* 교수 카드 2×2 */
+    .profs {
+      position: relative; z-index: 3; margin-top: 44px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+    }
+    .prof {
+      position: relative;
+      padding: 30px 32px 30px; border-radius: 30px;
+      background: #fff; border: 3px solid var(--line);
+      min-height: 0;
+    }
+    .prof .icon {
+      width: 124px; height: 124px; border-radius: 50%;
+      display: block; object-fit: cover; object-position: 50% 18%;
+      background: #e9ece4; border: 5px solid var(--green);
+      font-size: 42px; font-weight: 900;
+    }
+    .prof:nth-child(2) .icon, .prof:nth-child(3) .icon { border-color: var(--lime); }
+    .prof h3 {
+      margin-top: 22px;
+      font-size: 42px; font-weight: 900; letter-spacing: -0.04em; color: var(--ink);
+    }
+    .prof h3 small { font-size: 28px; font-weight: 700; color: var(--ink-soft); margin-left: 4px; }
+    .prof .kw { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+    .prof .kw span { font-size: 27px; font-weight: 800; color: var(--green); letter-spacing: -0.02em; }
+    .badge {
+      position: absolute; right: 28px; top: 34px;
+      padding: 8px 18px; border-radius: 999px;
+      background: var(--green); color: #fff;
+      font-size: 22px; font-weight: 800;
+    }
+
+    .foot {
+      position: relative; z-index: 3; margin-top: 36px;
+      display: flex; align-items: center; gap: 18px;
+      font-size: 30px; font-weight: 700; line-height: 1.45; letter-spacing: -0.03em; color: var(--ink-soft);
+    }
+    .foot b { color: var(--green); font-weight: 900; }
+    .foot .label { flex: none; align-self: center; padding: 10px 20px; border-radius: 16px; background: var(--green); color: #fff; font-size: 22px; font-weight: 900; line-height: 1.25; text-align: center; letter-spacing: -0.02em; }
+    .foot .label small { display: block; font-size: 14px; font-weight: 800; letter-spacing: .12em; color: var(--lime); }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 270px; }
+    .spark.s2 { right: 210px; top: 340px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>04</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">교수진</span>
+      <h2 class="title">문헌정보학과<br><span class="hl">교수님을 소개합니다</span></h2>
+    </div>
+
+    <div class="profs">
+      <div class="prof">
+        <span class="badge">학과장</span>
+        <img class="icon" src="images/prof/park.png" alt="박광헌 교수">
+        <h3>박광헌 <small>교수</small></h3>
+        <div class="kw"><span>#학교도서관운영</span><span>#독서지도</span></div>
+      </div>
+      <div class="prof">
+        <img class="icon" src="images/prof/kim.jpg" alt="김신영 교수">
+        <h3>김신영 <small>교수</small></h3>
+        <div class="kw"><span>#정보서비스론</span></div>
+      </div>
+      <div class="prof">
+        <img class="icon" src="images/prof/choi.png" alt="최예진 교수">
+        <h3>최예진 <small>교수</small></h3>
+        <div class="kw"><span>#자료분류론</span><span>#지식정보큐레이션</span></div>
+      </div>
+      <div class="prof">
+        <img class="icon" src="images/prof/jang.jpg" alt="장보성 교수">
+        <h3>장보성 <small>교수</small></h3>
+        <div class="kw"><span>#정보학개론</span><span>#데이터베이스이해</span><span>#정보시스템개발</span></div>
+      </div>
+    </div>
+
+    <p class="foot"><span class="label"><small>POINT</small>교수진</span><span><b>문화체육관광부</b> 등 현장 경력을 갖추고 <b>대학도서관</b>을 거친<br>교수님들이 이론과 실무를 함께 가르쳐요.</span></p>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

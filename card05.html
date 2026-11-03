@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>05 공부하는 곳</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+
+    /* 사진: 위 큰 사진 1 + 아래 작은 사진 2 */
+    .photos {
+      position: relative; z-index: 3; margin-top: 32px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 26px 18px;
+    }
+    .ph.big { grid-column: 1 / -1; }
+    .ph img {
+      width: 100%; height: 220px; object-fit: cover; display: block;
+      border-radius: 26px; background: var(--line);
+    }
+    .ph.big img { height: 300px; border-radius: 30px; }
+    .ph .cap { margin-top: 14px; padding-left: 4px; }
+    .ph .name {
+      display: inline-block; padding: 6px 18px; border-radius: 999px;
+      background: var(--green); color: #fff;
+      font-size: 24px; font-weight: 900; letter-spacing: -0.02em;
+    }
+    .ph .desc { margin-top: 8px; font-size: 25px; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink-soft); }
+    .ph.big .cap { display: flex; align-items: center; gap: 16px; }
+    .ph.big .name { font-size: 26px; padding: 7px 20px; }
+    .ph.big .desc { margin-top: 0; font-size: 28px; }
+
+    .cafe {
+      position: absolute; left: 80px; bottom: 40px; z-index: 3;
+      display: flex; align-items: center; gap: 16px;
+      font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink-soft);
+    }
+    .cafe::before { content: ''; flex: none; width: 8px; height: 34px; border-radius: 4px; background: var(--lime); }
+    .cafe b { color: var(--green); font-weight: 900; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 300px; }
+    .spark.s2 { right: 200px; top: 370px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>05</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">전공강의실</span>
+      <h2 class="title">우리가<br><span class="hl">공부하는 곳</span></h2>
+    </div>
+
+    <div class="photos">
+      <div class="ph big">
+        <img src="images/space/major-classroom.jpg" alt="초록색 의자와 책상이 줄지어 놓인 전공강의실">
+        <div class="cap">
+          <span class="name">주제분석실 1313A</span>
+          <p class="desc">문헌정보학 전공 수업이 열리는 곳</p>
+        </div>
+      </div>
+      <div class="ph big">
+        <img src="images/space/lab.jpg" alt="모니터와 키보드가 한 자리씩 놓인 컴퓨터 전공강의실">
+        <div class="cap">
+          <span class="name">컴퓨터실</span>
+          <p class="desc">한 자리씩 컴퓨터가 있어 데이터베이스·정보검색을 실습해요</p>
+        </div>
+      </div>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>02 문헌정보학과란?</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+    .lead {
+      margin-top: 26px;
+      font-size: 32px; font-weight: 600; line-height: 1.5; letter-spacing: -0.03em;
+      color: var(--ink-soft);
+    }
+    .lead b { color: var(--ink); font-weight: 800; }
+
+    /* 4단계 카드 2×2 */
+    .steps {
+      position: relative; z-index: 3; margin-top: 40px;
+      display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 20px;
+    }
+    .step {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 28px 32px; border-radius: 28px;
+      background: #fff; border: 3px solid var(--line);
+    }
+    .step .num {
+      flex: none; width: 66px; height: 66px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--green); color: #fff;
+      font-size: 28px; font-weight: 900;
+    }
+    .step:nth-child(2) .num, .step:nth-child(3) .num { background: var(--lime); color: var(--green-dark); }
+    .step h3 { font-size: 42px; font-weight: 900; letter-spacing: -0.04em; color: var(--green); }
+    .step p { margin-top: 8px; font-size: 26px; font-weight: 600; line-height: 1.4; color: var(--ink-soft); letter-spacing: -0.02em; }
+
+    /* 숫자 띠 */
+    .facts {
+      position: relative; z-index: 3; margin-top: 22px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      padding: 38px 10px; border-radius: 30px;
+      background: var(--green); color: #fff;
+    }
+    .fact { text-align: center; padding: 0 10px; }
+    .fact + .fact { border-left: 2px solid rgba(255, 255, 255, .22); }
+    .fact b { display: block; font-size: 56px; font-weight: 900; letter-spacing: -0.03em; color: var(--lime); line-height: 1.1; }
+    .fact span { display: block; margin-top: 10px; font-size: 25px; font-weight: 700; letter-spacing: -0.02em; }
+
+    .now {
+      position: relative; z-index: 3; margin-top: 22px;
+      display: flex; align-items: center; gap: 16px;
+      font-size: 30px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink-soft);
+    }
+    .now::before { content: ''; flex: none; width: 8px; height: 36px; border-radius: 4px; background: var(--lime); }
+    .now b { color: var(--green); font-weight: 900; }
+
+    /* 궁금해하는 두두 */
+    .stage { position: absolute; right: 50px; top: 300px; width: 260px; z-index: 2; }
+    .stage img { width: 100%; display: block; clip-path: inset(0 0 0 14%); }
+    .shelf { position: absolute; right: 236px; top: 352px; width: 132px; z-index: 1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>02</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">문헌정보학과란?</span>
+      <h2 class="title">책만 다루는 학과?<br><span class="hl">아니요!</span></h2>
+      <p class="lead">넘쳐나는 정보 속에서 필요한 정보를 <b>골라내고</b>,<br>쉽게 찾을 수 있게 <b>정리해서</b> 필요한 사람에게 <b>연결하는</b> 방법을 배워요.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <div><h3>모으기</h3><p>가치 있는 자료를 골라 수집</p></div>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <div><h3>정리하기</h3><p>분류하고 설명을 붙여<br>찾기 쉽게</p></div>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <div><h3>찾기</h3><p>원하는 정보를 정확하게 검색</p></div>
+      </div>
+      <div class="step">
+        <span class="num">4</span>
+        <div><h3>연결하기</h3><p>사람에게 맞는 정보를 전달</p></div>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div class="fact"><b>1980</b><span>도서관학과로 출발</span></div>
+      <div class="fact"><b>1990</b><span>문헌정보학과로 이름 변경</span></div>
+      <div class="fact"><b>석사·박사</b><span>대학원까지 이어지는 학과</span></div>
+    </div>
+
+    <p class="now"><span><b>지금은 정보·데이터</b>까지 다뤄요.</span></p>
+
+    <img class="shelf" src="images/shelf.svg" alt="책이 꽂힌 서가">
+    <div class="stage">
+      <img src="images/dodu/dodu-23.png" alt="고개를 갸웃하며 궁금해하는 두두">
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

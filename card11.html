@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>10 마무리</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 40px;
+      font-size: 104px; font-weight: 900; line-height: 1.12; letter-spacing: -0.045em;
+    }
+    .sub {
+      margin-top: 32px;
+      font-size: 46px; font-weight: 700; line-height: 1.35; letter-spacing: -0.03em;
+    }
+    .sub .hl { font-weight: 900; }
+
+    /* 연락처 */
+    .contact {
+      position: absolute; left: 80px; bottom: 80px; z-index: 3; width: 560px;
+      padding: 30px 32px; border-radius: 30px;
+      background: rgba(255, 255, 255, .1); border: 2px solid rgba(255, 255, 255, .22);
+      display: flex; flex-direction: column; gap: 18px;
+    }
+    .contact .row { display: flex; align-items: flex-start; gap: 16px; }
+    .contact .k {
+      flex: none; width: 118px; padding: 6px 0; border-radius: 999px; text-align: center;
+      background: var(--lime); color: var(--green-dark);
+      font-size: 21px; font-weight: 900;
+    }
+    .contact .v { font-size: 26px; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; padding-top: 2px; }
+    .contact .v small { display: block; font-size: 22px; font-weight: 600; opacity: .8; }
+
+    /* 두두 + 원형 배경 + 말풍선 */
+    .stage { position: absolute; right: -120px; bottom: -170px; width: 660px; height: 660px; z-index: 1; }
+    .stage .ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--green-soft);
+      box-shadow: 0 0 0 26px rgba(216, 224, 64, .18);
+    }
+    .stage .ring::after {
+      content: ''; position: absolute; inset: 60px; border-radius: 50%;
+      border: 4px dashed rgba(255, 255, 255, .22);
+    }
+    .stage img { position: absolute; left: 70px; top: 60px; width: 430px; }
+
+    .bubble {
+      position: absolute; right: 70px; top: 800px; z-index: 4;
+      padding: 24px 34px; border-radius: 32px;
+      background: var(--lime); color: var(--green-dark);
+      font-size: 36px; font-weight: 900; letter-spacing: -0.03em;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+    }
+    .bubble::after {
+      content: ''; position: absolute; left: 230px; bottom: -24px;
+      border: 14px solid transparent; border-top: 16px solid var(--lime);
+      border-left-width: 6px; border-right-width: 22px;
+    }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 56px; line-height: 1; }
+    .spark.s1 { right: 120px; top: 250px; }
+    .spark.s2 { right: 230px; top: 340px; font-size: 36px; opacity: .8; }
+  </style>
+</head>
+<body>
+  <div class="card green">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>11</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">함께해요</span>
+      <h2 class="title">정보와 사람을<br>잇는 사람,</h2>
+      <p class="sub"><span class="hl">대구대 문헌정보학과</span>에서<br>시작해요</p>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+
+    <div class="stage">
+      <div class="ring"></div>
+      <img src="images/dodu/dodu-03.png" alt="손 흔드는 두두">
+    </div>
+    <div class="bubble">우리가 기다리고 있을게요!</div>
+
+    <div class="contact">
+      <div class="row"><span class="k">홈페이지</span><span class="v">lis.daegu.ac.kr</span></div>
+      <div class="row"><span class="k">인스타그램</span><span class="v">@daegu_univ_lis</span></div>
+      <div class="row"><span class="k">학과사무실</span><span class="v">053-850-6350<small>사회과학대학 1호관 3101호</small></span></div>
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>08 학과 동아리</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+
+    /* 동아리 5줄 */
+    /* 차분한 목록: 하나의 흰 판 + 얇은 구분선 + 번호 */
+    .clubs {
+      position: relative; z-index: 3; margin-top: 48px; width: 630px;
+      padding: 8px 34px; border-radius: 28px;
+      background: #fff; border: 2px solid var(--line);
+    }
+    .club {
+      display: flex; align-items: center; gap: 26px;
+      padding: 24px 0;
+    }
+    .club + .club { border-top: 1.5px solid var(--line); }
+    .club .ic {
+      flex: none; width: 44px;
+      font-size: 26px; font-weight: 800; color: var(--green-soft); letter-spacing: .02em;
+    }
+    .club .row { display: flex; align-items: center; gap: 12px; }
+    .club h3 { font-size: 32px; font-weight: 800; letter-spacing: -0.04em; color: var(--ink); }
+    .club .field {
+      padding: 3px 12px; border-radius: 999px;
+      border: 1.5px solid var(--green-soft); color: var(--green);
+      font-size: 19px; font-weight: 700;
+    }
+    .club p { margin-top: 6px; font-size: 23px; font-weight: 500; color: var(--ink-soft); letter-spacing: -0.02em; }
+
+    .title { position: relative; }
+    .blossom { position: absolute; left: 400px; top: 92px; width: 230px; }
+
+    /* 두두 */
+    .stage { position: absolute; right: 22px; bottom: -14px; width: 395px; z-index: 2; }
+    .stage::before {
+      content: ''; position: absolute; left: 0; bottom: -140px; width: 520px; height: 520px;
+      border-radius: 50%; background: rgba(0, 120, 112, .08); z-index: -1;
+    }
+    .stage img { width: 100%; display: block; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 280px; }
+    .spark.s2 { right: 200px; top: 350px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>09</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">학과 동아리</span>
+      <h2 class="title">동아리를<br><span class="hl">소개합니다</span><img class="blossom" src="images/blossom.svg" alt="벚꽃"></h2>
+    </div>
+
+    <div class="clubs">
+      <div class="club">
+        <span class="ic">01</span>
+        <div>
+          <div class="row"><h3>다빈</h3><span class="field">도서관 봉사</span></div>
+          <p>학교·공공·작은도서관에서 사서 실무 경험</p>
+        </div>
+      </div>
+      <div class="club">
+        <span class="ic">02</span>
+        <div>
+          <div class="row"><h3>생각하는 돈키호테</h3><span class="field">토론</span></div>
+          <p>1991년부터 이어온 자유토론·독서토론·서평</p>
+        </div>
+      </div>
+      <div class="club">
+        <span class="ic">03</span>
+        <div>
+          <div class="row"><h3>셈사랑</h3><span class="field">컴퓨터</span></div>
+          <p>1989년 창립. PPT·레포트 작성법, 컴활 자격증</p>
+        </div>
+      </div>
+      <div class="club">
+        <span class="ic">04</span>
+        <div>
+          <div class="row"><h3>L.S.G</h3><span class="field">전공 스터디</span></div>
+          <p>문헌정보학을 자기주도로 함께 공부</p>
+        </div>
+      </div>
+      <div class="club">
+        <span class="ic">05</span>
+        <div>
+          <div class="row"><h3>리더(Reader)</h3><span class="field">웹콘텐츠</span></div>
+          <p>웹툰·웹소설·전자책을 읽고 카드뉴스로 제작</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="stage">
+      <img src="images/dodu/dodu-27.png" alt="저요! 저요! 손 드는 두두">
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>01 표지</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .cover-text { position: relative; z-index: 3; margin-top: 64px; }
+    .cover-title {
+      margin-top: 40px;
+      font-size: 126px; font-weight: 900; line-height: 1.08; letter-spacing: -0.045em;
+    }
+    .cover-sub {
+      margin-top: 36px;
+      font-size: 56px; font-weight: 700; line-height: 1.35; letter-spacing: -0.03em;
+    }
+    .cover-sub .hl { font-weight: 900; }
+    .cover-sub .dot { opacity: .55; margin: 0 6px; }
+    .cover-small { margin-top: 28px; font-size: 30px; font-weight: 500; opacity: .8; }
+
+    /* 두두 + 원형 배경 */
+    .stage { position: absolute; right: -110px; bottom: -150px; width: 780px; height: 780px; z-index: 1; }
+    .stage .ring {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: var(--green-soft);
+      box-shadow: 0 0 0 26px rgba(216, 224, 64, .18);
+    }
+    .stage .ring::after {
+      content: ''; position: absolute; inset: 70px; border-radius: 50%;
+      border: 4px dashed rgba(255, 255, 255, .22);
+    }
+    .stage img { position: absolute; left: 60px; top: 80px; width: 570px; }
+
+    /* 반짝이 장식 */
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 56px; line-height: 1; }
+    .spark.s1 { left: 780px; top: 330px; }
+    .spark.s2 { left: 960px; top: 470px; font-size: 38px; opacity: .8; }
+    .spark.s3 { left: 120px; top: 870px; font-size: 30px; opacity: .6; }
+
+    .swipe {
+      position: absolute; left: 80px; bottom: 80px; z-index: 3;
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 20px 34px; border-radius: 999px;
+      background: #fff; color: var(--green);
+      font-size: 30px; font-weight: 800;
+      text-decoration: none; cursor: pointer; transition: transform .15s;
+    }
+    .swipe:hover { transform: translateX(6px); }
+    .swipe span { font-size: 34px; }
+
+    /* 두두 머리 위 말풍선 */
+    .welcome {
+      position: absolute; left: 618px; top: 672px; z-index: 4;
+      padding: 24px 34px; border-radius: 32px;
+      background: var(--lime); color: var(--green-dark);
+      font-size: 36px; font-weight: 900; letter-spacing: -0.03em;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+    }
+    .welcome::after {
+      content: ''; position: absolute; left: 50%; bottom: -15px; margin-left: -14px;
+      border: 14px solid transparent; border-top: 16px solid var(--lime); border-bottom: 0;
+      border-left-width: 6px; border-right-width: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card green">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>01</b> / 11</span>
+    </div>
+
+    <div class="cover-text">
+      <span class="tag">학과 소개</span>
+      <h1 class="cover-title">도서관부터<br>데이터까지,</h1>
+      <p class="cover-sub"><span class="hl">지식의 길</span>을 만드는 학과</p>
+      <p class="cover-small">대구대학교 문헌정보학과를 소개합니다</p>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+    <span class="spark s3">✦</span>
+
+    <div class="stage">
+      <div class="ring"></div>
+      <img src="images/dodu/dodu-13.png" alt="노트북을 하는 두두">
+    </div>
+    <div class="welcome">환영해요!</div>
+
+    <a class="swipe" href="card02.html">넘겨서 알아보기 <span>→</span></a>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

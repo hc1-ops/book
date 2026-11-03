@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>03 무엇을 배우나요?</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+
+    /* 분야 타일 3×2 */
+    /* 차분한 타일: 반투명 흰 판 + 얇은 테두리, 크기 축소 */
+    .grid {
+      position: relative; z-index: 3; margin-top: 52px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+    .tile {
+      padding: 24px 24px 26px; border-radius: 22px;
+      background: #fff;
+      border: 2px solid var(--line);
+      color: var(--ink);
+    }
+    .tile .no {
+      display: inline-block; font-size: 18px; font-weight: 800; letter-spacing: .08em;
+      color: var(--green-soft);
+    }
+    .tile h3 {
+      margin-top: 10px;
+      font-size: 34px; font-weight: 800; letter-spacing: -0.04em; color: var(--green);
+    }
+    .tile p { margin-top: 8px; font-size: 22px; font-weight: 500; line-height: 1.45; color: var(--ink-soft); letter-spacing: -0.02em; }
+
+    /* 두두 + 말풍선 */
+    .stage { position: absolute; right: -30px; bottom: -20px; width: 440px; z-index: 2; }
+    .stage img { width: 100%; display: block; }
+    .computer { position: absolute; right: 262px; bottom: 80px; width: 200px; z-index: 1; transform: rotate(-4deg); }
+    .bubble {
+      position: absolute; left: 80px; bottom: 56px; z-index: 3;
+      padding: 24px 34px; border-radius: 30px;
+      background: var(--green); color: #fff;
+      font-size: 30px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.45;
+    }
+    .card .bubble .hl { font-weight: 900; color: var(--lime); }
+    .note {
+      position: relative; z-index: 3; margin-top: 22px;
+      font-size: 22px; font-weight: 500; opacity: .65;
+    }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; }
+    .spark.s1 { right: 110px; top: 250px; }
+    .spark.s2 { right: 210px; top: 330px; font-size: 32px; opacity: .8; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>03</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">무엇을 배우나요?</span>
+      <h2 class="title">4년 동안<br><span class="hl">이런 걸 배워요</span></h2>
+    </div>
+
+    <div class="grid">
+      <div class="tile">
+        <span class="no">01</span>
+        <h3>자료조직</h3>
+        <p>책과 자료를 분류하고 목록을 만들어요</p>
+      </div>
+      <div class="tile">
+        <span class="no">02</span>
+        <h3>정보서비스</h3>
+        <p>이용자에게 필요한 정보를 찾아 제공해요</p>
+      </div>
+      <div class="tile">
+        <span class="no">03</span>
+        <h3>기록관리</h3>
+        <p>공공·기업의 중요한 기록을 지켜요</p>
+      </div>
+      <div class="tile">
+        <span class="no">04</span>
+        <h3>데이터</h3>
+        <p>디지털 정보와 데이터를 분석·관리해요</p>
+      </div>
+      <div class="tile">
+        <span class="no">05</span>
+        <h3>도서관 경영</h3>
+        <p>도서관을 기획하고 운영해요</p>
+      </div>
+      <div class="tile">
+        <span class="no">06</span>
+        <h3>독서지도</h3>
+        <p>책 읽는 즐거움과 방법을 안내해요</p>
+      </div>
+    </div>
+
+
+    <div class="bubble">모두 <span class="hl">'정보'를 다루는 힘</span>이<br>되는 공부예요!</div>
+    <p class="note">※ 주요 분야 예시이며, 세부 교과목은 학과 교육과정을 참고하면 좋아요.</p>
+    <img class="computer" src="images/computer.svg" alt="데이터 화면이 켜진 컴퓨터">
+    <div class="stage">
+      <img src="images/dodu/dodu-06.png" alt="손가락으로 가리키는 두두">
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

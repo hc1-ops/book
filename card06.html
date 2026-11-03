@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>06 함께하는 공간</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 92px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+
+    /* 사진 2장 나란히 */
+    .photos {
+      position: relative; z-index: 3; margin-top: 52px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    .ph img {
+      width: 100%; height: 540px; object-fit: cover; display: block;
+      border-radius: 28px; background: var(--line);
+    }
+    .ph .cap { margin-top: 16px; padding-left: 4px; }
+    .ph .name {
+      display: inline-block; padding: 7px 20px; border-radius: 999px;
+      background: var(--green); color: #fff;
+      font-size: 26px; font-weight: 900; letter-spacing: -0.02em;
+    }
+    .ph .desc { margin-top: 10px; font-size: 26px; font-weight: 700; line-height: 1.4; letter-spacing: -0.02em; color: var(--ink-soft); }
+
+    .cafe {
+      position: absolute; left: 80px; bottom: 72px; z-index: 3;
+      display: flex; align-items: center; gap: 16px;
+      font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: var(--ink-soft);
+    }
+    .cafe .label { flex: none; padding: 7px 20px; border-radius: 999px; background: var(--green); color: #fff; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; }
+    .cafe .label::before { content: "CAFE"; margin-right: 8px; font-size: 16px; font-weight: 800; letter-spacing: .08em; color: var(--lime); vertical-align: 2px; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 300px; }
+    .spark.s2 { right: 200px; top: 370px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>06</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">사회과학대 공간</span>
+      <h2 class="title">함께 공부하고<br><span class="hl">쉬어 가는 곳</span></h2>
+    </div>
+
+    <div class="photos">
+      <div class="ph">
+        <img src="images/space/seminar.jpg" alt="긴 흰색 테이블과 화이트보드, 책장이 있는 세미나실">
+        <div class="cap">
+          <span class="name">세미나실</span>
+          <p class="desc">스터디·회의를 하는 곳</p>
+        </div>
+      </div>
+      <div class="ph">
+        <img src="images/space/lounge-2.jpg" alt="소파와 원목 테이블, 책장이 있는 라운지">
+        <div class="cap">
+          <span class="name">라운지</span>
+          <p class="desc">공강 시간에 쉬고 개인 공부나 팀플도 해요</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="cafe"><span class="label">ing카페</span><span>사회과학대 1층, 잠깐 쉬어 가며 친구들과 이야기꽃을 피우는 곳이에요.</span></p>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

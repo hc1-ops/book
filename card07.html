@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>06 창파도서관</title>
+  <link rel="stylesheet" href="css/card.css">
+  <style>
+    .head { position: relative; z-index: 3; margin-top: 64px; }
+    .title {
+      margin-top: 32px;
+      font-size: 88px; font-weight: 900; line-height: 1.15; letter-spacing: -0.045em;
+    }
+    .lead {
+      margin-top: 20px;
+      font-size: 32px; font-weight: 600; line-height: 1.5; letter-spacing: -0.03em;
+      color: var(--ink-soft);
+    }
+    .lead b { color: var(--ink); font-weight: 800; }
+
+    /* 사진 2장 */
+    .photos {
+      position: relative; z-index: 3; margin-top: 30px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+    }
+    .ph img {
+      width: 100%; height: 236px; object-fit: cover; display: block;
+      border-radius: 26px; background: var(--line);
+    }
+    /* 오른쪽 사진: 왼쪽 안내 배너 부분을 잘라내고 같은 크기로 */
+    .ph img.crop-left { object-view-box: inset(0 0 0 25%); }
+    .ph .name {
+      display: inline-block; margin-top: 14px; margin-left: 4px;
+      padding: 6px 18px; border-radius: 999px;
+      background: var(--green); color: #fff;
+      font-size: 24px; font-weight: 900; letter-spacing: -0.02em;
+    }
+
+    /* 포인트 2줄 */
+    .points { position: relative; z-index: 3; margin-top: 26px; width: 690px; display: flex; flex-direction: column; gap: 12px; }
+    .point {
+      display: flex; align-items: center; gap: 18px;
+      padding: 16px 26px; border-radius: 22px;
+      background: #fff; border: 3px solid var(--line);
+      font-size: 27px; font-weight: 700; line-height: 1.4; letter-spacing: -0.03em; color: var(--ink);
+    }
+    .point b { color: var(--green); font-weight: 900; }
+    .point .chk {
+      flex: none; width: 40px; height: 40px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: var(--lime); color: var(--green-dark);
+      font-size: 24px; font-weight: 900;
+    }
+
+    /* 마무리 한마디 칸 */
+    .point.quote {
+      display: block; padding: 20px 28px;
+      background: var(--green); border-color: var(--green); color: #fff;
+      font-size: 26px; font-weight: 700; line-height: 1.5;
+    }
+    .point.quote b { color: var(--lime); font-weight: 900; }
+
+    /* 두두 */
+    .stage { position: absolute; right: 30px; bottom: -6px; width: 270px; z-index: 2; }
+    .stage::before {
+      content: ''; position: absolute; left: -40px; bottom: -120px; width: 380px; height: 380px;
+      border-radius: 50%; background: rgba(0, 120, 112, .08); z-index: -1;
+    }
+    .stage img { width: 100%; display: block; }
+
+    .spark { position: absolute; z-index: 2; color: var(--lime); font-size: 52px; line-height: 1; -webkit-text-stroke: 2px var(--green); }
+    .spark.s1 { right: 110px; top: 280px; }
+    .spark.s2 { right: 200px; top: 350px; font-size: 32px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-top">
+      <span class="dept">대구대학교 문헌정보학과</span>
+      <span class="page"><b>07</b> / 11</span>
+    </div>
+
+    <div class="head">
+      <span class="tag">창파도서관</span>
+      <h2 class="title">학교 도서관이 곧<br><span class="hl">우리의 실습 현장</span></h2>
+      <p class="lead">수업에서 배운 <b>분류·검색·정보서비스</b>가 실제 도서관에서<br>어떻게 쓰이는지 바로 볼 수 있어요.</p>
+    </div>
+
+    <div class="photos">
+      <div class="ph">
+        <img src="images/library/changpa.jpg" alt="안내데스크와 열람 공간이 보이는 창파도서관 내부">
+        <span class="name">창파도서관</span>
+      </div>
+      <div class="ph">
+        <img class="crop-left" src="images/ElectronicImg1.png" alt="창파도서관에서 열린 2024 전자정보박람회에 줄 선 학생들">      </div>
+    </div>
+
+    <div class="points">
+      <p class="point"><span class="chk">✓</span><span><b>자료분류론</b>에서 배운 분류번호로<br>서가에서 책을 직접 찾아봐요.</span></p>
+      <p class="point"><span class="chk">✓</span><span><b>정보검색이해</b>에서 익힌 검색법을<br>도서관 데이터베이스에 바로 써봐요.</span></p>
+      <p class="point"><span class="chk">✓</span><span>시험 기간엔 공부하는 곳, 우리에겐 전공을 실습하는 곳<br><b>책을 찾던 사람에서, 책을 찾아주는 사람으로</b></span></p>
+    </div>
+
+    <span class="spark s1">✦</span>
+    <span class="spark s2">✦</span>
+
+    <div class="stage">
+      <img src="images/dodu/dodu-02.png" alt="손으로 안내하는 두두">
+    </div>
+  </div>
+  <script src="js/fit.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
+  <!-- 벚꽃 묶음 (두두 일러스트와 같은 굵은 외곽선 스타일) -->
+  <defs>
+    <g id="petal">
+      <path d="M0 0 C -14 -10 -16 -34 0 -44 C 16 -34 14 -10 0 0 Z"/>
+    </g>
+    <g id="flower">
+      <g fill="#f8b4c4" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round">
+        <use href="#petal" transform="rotate(0)"/>
+        <use href="#petal" transform="rotate(72)"/>
+        <use href="#petal" transform="rotate(144)"/>
+        <use href="#petal" transform="rotate(216)"/>
+        <use href="#petal" transform="rotate(288)"/>
+      </g>
+      <circle r="10" fill="#D8E040" stroke="#1d1d1d" stroke-width="3.5"/>
+    </g>
+  </defs>
+
+  <!-- 가지 -->
+  <path d="M8 170 C 60 150, 110 120, 150 70" fill="none" stroke="#1d1d1d" stroke-width="5" stroke-linecap="round"/>
+  <path d="M96 128 C 120 140, 150 145, 182 138" fill="none" stroke="#1d1d1d" stroke-width="4" stroke-linecap="round"/>
+  <!-- 잎 -->
+  <path d="M60 150 C 50 128, 66 116, 82 120 C 84 138, 74 150, 60 150 Z" fill="#7cc243" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M168 140 C 176 124, 194 122, 204 132 C 194 146, 180 148, 168 140 Z" fill="#0a8a80" stroke="#1d1d1d" stroke-width="3.5" stroke-linejoin="round"/>
+
+  <!-- 꽃 -->
+  <use href="#flower" transform="translate(156 66) scale(1.05)"/>
+  <use href="#flower" transform="translate(196 140) scale(.8) rotate(20)"/>
+  <use href="#flower" transform="translate(98 128) scale(.7) rotate(-15)"/>
+
+  <!-- 흩날리는 꽃잎 -->
+  <g fill="#f8b4c4" stroke="#1d1d1d" stroke-width="3" stroke-linejoin="round">
+    <path d="M232 52 c -8 -6 -8 -18 0 -22 c 8 4 8 16 0 22 Z" transform="rotate(30 232 40)"/>
+    <path d="M222 92 c -6 -5 -6 -14 0 -17 c 6 3 6 12 0 17 Z" transform="rotate(-25 222 84)"/>
+    <path d="M48 96 c -6 -5 -6 -14 0 -17 c 6 3 6 12 0 17 Z" transform="rotate(40 48 88)"/>
+  </g>
+</svg>
